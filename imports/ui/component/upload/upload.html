@@ -1,0 +1,19 @@
+<template name="uploadForm">
+	<div><img class="thumbnail" src="{{uploadedImage.link}}" style="width:50%" /></div>
+  {{#with currentUpload}}
+    Uploading <b>{{file.name}}</b>:
+    <span id="progress">{{progress.get}}%</span>
+  {{else}}
+    <input id="fileInput" type="file" />
+  {{/with}}
+</template>
+
+
+<template name="uploadFormPdf">
+  {{#with currentUpload}}
+    Uploading <b>{{file.name}}</b>:
+    <span id="progress">{{progress.get}}%</span>
+  {{else}}
+    <input id="fileInput" type="file" />
+  {{/with}}
+</template>

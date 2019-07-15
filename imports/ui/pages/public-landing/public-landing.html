@@ -1,0 +1,242 @@
+<template name="publicLanding">
+    <style>
+      #archive .nav-pills .nav-link.active{
+        background-color:white;
+        color:#666;
+      }
+      #archive a{
+        /*color:#28a745;*/
+        color:#666;
+        background-color: #F5F5F5;
+      }
+      #archive a:hover{
+        color:#666;
+        background-color: #F1F1F1;
+      }
+      #archive_choice li{
+        margin-left:2px;
+      }
+      .card-body{
+        padding:2%;
+      }
+      @media (min-width: 576px){
+        .card-columns {
+            column-count: 4;
+        }
+      }
+    </style>
+	<div style="overflow:hidden;display:block;height: 550px">
+		<video autoplay muted loop id="myVideo" style="width:100%">
+		  <source src="communityvideo.mp4" type="video/mp4">
+		</video>
+		<img src="header_white_green.png" style="position: absolute;top: 230px;left: 50%;transform: translate(-50%, -50%);width:60%"/>
+
+		<h2 style="position: absolute;top: 310px;left: 50%;transform: translate(-50%, -50%);color:white;text-align:center;width:100%;font-family:'Open Sans'">Koleksyon ng Kaalaman para sa Agrikultura</h2>
+
+  		<h5 style="position: absolute;top: 365px;left: 50%;transform: translate(-50%, -50%);color:white;text-align:center;font-family:'Roboto Condensed';margin-bottom:70px;">Makialam at Maging may Alam</h5>
+
+      <form class="new-task" style="position: absolute;top: 430px;left: 50%;transform: translate(-50%, -50%);width: 40%;">
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" placeholder="Ano ang gusto mong pag-usapan?" value="" />
+        </div>
+      </form>
+
+      <div class="container-fluid" style="position: absolute;top: 500px;left: 50%;transform: translate(-50%, -50%);text-align:center;color:white">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <span style="font-family:'Roboto Condensed';font-size:22px">17</span><br/><span style="font-family:'Open Sans';font-size:small">Sites</span>
+          </div>  
+          <div class="col-md-2">
+            <span style="font-family:'Roboto Condensed';font-size:22px">11</span><br/><span style="font-family:'Open Sans';font-size:small">Partner SUCs</span>
+          </div>  
+          <div class="col-md-2">
+            <span style="font-family:'Roboto Condensed';font-size:22px">10</span><br/><span style="font-family:'Open Sans';font-size:small">Trainings Conducted Nationwide</span>
+          </div>  
+          <div class="col-md-2">
+            <span style="font-family:'Roboto Condensed';font-size:22px">4</span><br/><span style="font-family:'Open Sans';font-size:small">Partner NGAs</span>
+          </div>  
+          <div class="col-md-2">
+            <span style="font-family:'Roboto Condensed';font-size:22px">367</span><br/><span style="font-family:'Open Sans';font-size:small">Trained Stakeholders</span>
+          </div>
+        </div>  
+      </div>
+	</div>
+  <div class="container-fluid" style="padding:3%">
+    <div class="row no-gutters">
+    <div class="col-md-2" style="margin-left:auto;text-align:center">
+      <img src="sarai_lady.png" style="width:60%"/>
+    </div>
+    <div class="col-md-7" style="margin-right:auto;font-size:x-large">
+      <span>May nais ka bang malaman tungkol sa iyong pananim? Basahin at panoorin ang mga inihandang materyales ng Project SARAi na maaaring makasagot sa iyong mga katanungan ukol sa pagsasaka.</span><br/>
+      <button onclick="window.location.href='/register'" id="task_submit" class="btn btn-success btn-sm">Join the community</button>
+    </div>
+    </div>
+  </div>
+  <hr style="margin:0"/>
+  
+  <div style="background:white">
+  <div class="container-fluid" style="padding:20px">
+  <div class="col-md-10" id="archive" style="margin:auto">
+  <!-- Nav pills -->
+      <ul class="nav nav-pills" id="archive_choice" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="pill" href="#home">Featured</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#rice">Rice</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#corn">Corn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#coffee">Coffee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#cacao">Cacao</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#coconut">Coconut</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#banana">Banana</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#sugarcane">Sugarcane</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#soybean">Soybean</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#tomato">Tomato</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div id="home" class="tab-pane active"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each tasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="rice" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each ricetasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="corn" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each corntasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="coffee" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each coffeetasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="cacao" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each cacaotasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="coconut" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each coconuttasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="banana" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each bananatasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="sugarcane" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each sugarcanetasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="soybean" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each soybeantasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+        <div id="tomato" class="tab-pane fade"><br>
+        
+        <div class="container-fluid" style="padding:0">
+        <div class="card-columns">
+          {{#each tomatotasks}}
+            {{> card}}
+          {{/each}}
+        </div>
+        </div>
+        
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+	
+</template>

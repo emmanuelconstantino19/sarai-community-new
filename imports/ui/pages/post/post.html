@@ -1,0 +1,27 @@
+<template name="post">
+	<div class="container-fluid" style="padding:0">
+	    <div class="row profile" style="margin-left:5%;margin-right:5%">
+	    	<div class="col-md-12">
+	        	<h4 style="font-family:'Roboto Condensed'">{{task_post.title}}</h4>
+	        	<div style="text-align:right"><span style="font-size:12px;font-family:'Open Sans'">feel free to call us <i class="fa fa-phone" style="margin-left:15px"></i> +63 (049) 536 2836<i class="fa fa-envelope" style="margin-left:15px"></i> project.sarai.uplb@gmail.com</span></div>
+	    	</div>
+	    </div>
+	    <hr style="margin:0"/>
+	    <div style="background:white">
+		    <div class="row profile" style="margin-left:5%;margin-right:5%">
+		    	<div class="col-md-2" style="text-align:right">
+		        	<p class="card-text" style="color:#bbbbbb;font-size:x-small">{{task_post.author}}</p>
+		        	<p class="card-text" style="color: #777777;font-family: 'Roboto Condensed';font-size: 18px;">{{task_post.createdAt}}</p>
+		        	<p class="card-text" style="color:#bbbbbb;font-size:x-small">TAGS:</p>
+		        	{{#each tag in task_post.tags}}
+		        		<p style="color:#bbbbbb;font-size:x-small">{{tag}}</p>
+		        	{{/each}}
+
+		    	</div>
+		    	<div class="col-md-10">
+		        	<p class="card-text" style="font-size:small">{{{task_post.body}}}</p>
+		    	</div>
+		    </div>
+		</div>
+	</div>        
+</template>

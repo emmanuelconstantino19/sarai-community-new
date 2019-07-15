@@ -1,0 +1,55 @@
+<template name="task">
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}} task list-group-item">     
+      <div style="margin-bottom:5px"><span class="badge {{#if isApproved}}badge-success{{else}}badge-primary{{/if}}">{{status}}</span><br/><span style="font-weight:bold">{{title}}</span><br/> Author: {{this.author}}{{#if isApproved}}<br/>Approved by: {{this.approvedBy}}{{/if}}</div>
+    	<!--<div style="margin-bottom:25px"><span>
+    	{{#each desc}}
+      {{this}}<br/>
+      {{/each}}</span></div>-->
+      <div>Tags: <span class="badge badge-dark">{{group}}</span>
+        {{#each tags}}
+          <span class="badge badge-dark">{{this}}</span>
+          <!--<button type="button" class="btn btn-info btn-sm">{{this}}</button>-->
+        {{/each}}
+      </div>
+ 
+    <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+    
+    {{#if isOwner}}
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+    {{/if}}
+ 
+    <span class="text"><strong>{{username}}</strong> - {{title}}</span>
+    {{#each desc}}
+    <span>{{this}}</span>
+    {{/each}}-->
+  </li>
+</template>
+
+<template name="taskEditor">
+	<li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}} task list-group-item">
+  	
+    <!--<button type="button" class="btn btn-danger" style="float:right;margin-left:10px">&times;</button>-->
+    <button type="button" class="btn btn-success approve" style="float:right;margin-left:10px">APPROVE</button>
+    <button type="button" class="btn btn-info edit" style="float:right">EDIT</button>
+    
+    
+    <div style="margin-bottom:5px"><span class="badge badge-primary">{{status}}</span><br/><span style="font-weight:bold">{{title}}<br/></span> Author: {{this.author}}</div>
+      <!--<div style="margin-bottom:25px"><span>
+      {{#each desc}}
+      {{this}}<br/>
+      {{/each}}</span></div>-->
+      <div>Tags: <span class="badge badge-dark">{{group}}</span>
+        {{#each tags}}
+          <span class="badge badge-dark">{{this}}</span>
+          <!--<button type="button" class="btn btn-info btn-sm">{{this}}</button>-->
+        {{/each}}
+      </div>
+
+  </li>
+</template>

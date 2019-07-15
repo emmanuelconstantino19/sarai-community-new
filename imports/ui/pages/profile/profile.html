@@ -1,0 +1,441 @@
+<template name="profile">
+  <style>
+      .nav-pills .nav-link.active{
+        background-color:#28a745;
+      }
+      nav0l{
+        color:#28a745;
+      }
+      a:hover{
+        color: green;
+      }
+    </style>
+  {{#if currentUser}}
+  <div class="container">
+    <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic" style="text-align:center">
+          <!--<span class="dot" style="height: 100px;
+  width: 100px;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  display: inline-block;"></span>-->
+          <img src="{{picture.link}}" class="img-responsive" alt="">
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            {{fullname}}
+          </div>
+          <div class="profile-usertitle-job" style="color:#28a745">
+            {{role}}<br/>{{#if isReviewer}}{{group}} GROUP{{/if}}
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        
+        <!-- SIDEBAR BUTTONS
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-dark btn-sm">Edit Profile</button>
+        </div>-->
+
+
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#home">
+              <i class="fa fa-home"></i>
+              Dashboard </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#menu1">
+              <i class="fa fa-object-group"></i>
+              Groups </a>
+            </li>
+            {{#if canPost}}
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#addpost">
+              <i class="fa fa-plus"></i>
+              Add Post </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#myposts">
+              <i class="fa fa-sticky-note"></i>
+              My Posts </a>
+            </li>
+            {{/if}}
+            {{#if canManagePosts}}
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#menu3">
+              <i class="fa fa-check"></i>
+              Manage Posts </a>
+            </li>
+            {{/if}}
+            {{#if canManageUsers}}
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#manageusers">
+              <i class="fa fa-users"></i>
+              Manage Users </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#managepage">
+              <i class="fa fa-newspaper"></i>
+              Manage Page
+              </a>
+            </li>
+            {{/if}}
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#edit">
+              <i class="fa fa-edit"></i>
+              Edit Profile </a>
+            </li>
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
+    </div>
+
+    <div class="tab-content col-md-9">
+    <div id="home" class="tab-pane active">
+      <h3>Dashboard</h3>
+      <p>to display all follow posts of all groups that this user follows</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Groups</h3>
+      <p>to display all groups that this user follows; can also see all groups existing in sarai community</p>
+    </div>
+
+    <div id="manageusers" class="tab-pane fade">
+      <div class="row">
+      <div class="col-md-4">
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" style="background: green">
+                <a class="card-link" style="color:white">
+                  SUBSCRIBERS
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="profile-content" style="padding:0">
+          
+                <ul class="list-group list-group-flush">
+                  {{#each subscribersList}}
+                    {{> user}}
+                  {{/each}}
+                </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" style="background: green">
+                <a class="card-link" style="color:white">
+                  AUTHORS
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="profile-content" style="padding:0">
+          
+                <ul class="list-group list-group-flush">
+                  {{#each authorsList}}
+                    {{> user}}
+                  {{/each}}
+                </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" style="background: green">
+                <a class="card-link" style="color:white">
+                  REVIEWERS
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="profile-content" style="padding:0">
+          
+                <ul class="list-group list-group-flush">
+                  {{#each reviewersList}}
+                    {{> user}}
+                  {{/each}}
+                </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="managepage" class="tab-pane fade">
+      <h3>Manage Page</h3>
+      <div class="row no-gutters">
+        <div class="col-md-2">
+          <input type="text" name="first" class="form-control" placeholder="17" value="" />
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="first" class="form-control" placeholder="Sites" value="" />
+        </div>
+        
+        <div class="col-md-2">
+          <input type="text" name="first" class="form-control" placeholder="11" value="" />
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="first" class="form-control" placeholder="Partner SUCs" value="" />
+        </div>
+
+        <div class="col-md-2">
+          <input type="text" name="first" class="form-control" placeholder="10" value="" />
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="first" class="form-control" placeholder="Trainings Conducted Nationwide" value="" />
+        </div>
+
+        <div class="col-md-2">
+          <input type="text" name="first" class="form-control" placeholder="4" value="" />
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="first" class="form-control" placeholder="Partner NGAs" value="" />
+        </div>
+
+        <div class="col-md-2">
+          <input type="text" name="first" class="form-control" placeholder="367" value="" />
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="first" class="form-control" placeholder="Trained Stakeholders" value="" />
+        </div>
+        <button id="manage_submit" class="btn btn-success btn-sm" style="margin-top:5px">Submit</button>
+      </div>
+    </div>
+
+    <div id="edit" class="tab-pane fade">
+      <h3>Edit Profile</h3>
+      <form class="edit-profile">
+        <div class="form-group">
+          <label>First name:</label>
+            <input type="text" name="fname" class="form-control" placeholder="{{firstName}}" value="" />
+        </div>
+        <div class="form-group">
+          <label>Last name:</label>
+            <input type="text" name="lname" class="form-control" placeholder="{{lastName}}" value="" />
+        </div>
+        <label for="sel1">Upload profile picture:</label>
+        {{> uploadForm}}<br/><br/>
+
+        <button id="edit_submit" class="btn btn-success btn-sm">Submit</button>
+      </form>
+    </div>
+
+    <div id="addpost" class="tab-pane fade">
+      <div class="row">
+    <div class="col-md-12">
+    <div id="accordion">
+    <div class="card">
+      <div class="card-header" style="background: #5b9bd1;">
+        <a class="card-link" data-toggle="collapse" href="#collapseOne" style="color:white">
+          <i class="fa fa-plus"></i>
+          ADD POST
+        </a>
+      </div>
+      <div> <!-- add id="collapseOne" data-parent="#accordion" class="collapse" to make it collapsible-->
+        <div>
+          <div class="profile-content">
+                <div class="container">
+                  <form class="new-task">
+                    <div class="form-group">
+                      <label for="sel1">Group:</label>
+                      <select class="form-control" id="group">
+                        <option value="Rice">Rice</option>
+                        <option value="Corn">Corn</option>
+                        <option value="Banana">Banana</option>
+                        <option value="Coconut">Coconut</option>
+                        <option value="Coffee">Coffee</option>
+                        <option value="Cacao">Cacao</option>
+                        <option value="Sugarcane">Sugarcane</option>
+                        <option value="Tomato">Tomato</option>
+                        <option value="Soybean">Soybean</option>
+                      </select>
+                    </div>
+                    <div style="margin-bottom:20px">
+                      <label for="sel1">Upload image thumbnail:</label><br/>
+                      {{> uploadForm}}
+                    </div>
+                    <div class="form-group" style="border:1px solid #ced4da;border-radius:.25rem;padding: .375rem .75rem;">
+                      <label for="sel1">Tags:</label>
+                      <div id="tags_list" style="max-height:100px;overflow-x:hidden">
+                      {{#each tags}}
+                        {{> tag}}
+                      {{/each}}
+                      </div>
+                      <input type="text" class="form-control" id="new_tag" name="username" placeholder="Add new tag" style="width:30%;float:left">
+                      <button id="tag_submit" class="btn btn-success btn-sm" style="height: calc(1.5em + .75rem + 2px);margin-left:5px">Submit</button>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sel1">Media type:</label>
+                      <select class="form-control" id="media">
+                        <option value="article">Article</option>
+                        <option value="pdf">Pdf</option>
+                        <!--<option value="Image">Image</option>-->
+                        <!--<option value="Video">Video</option>-->
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="usr">Title:</label>
+                      <input type="text" class="form-control" id="title" name="username">
+                    </div>
+                    <!--<div class="form-group">
+                      <label for="comment">Body:</label>
+                      <textarea class="form-control" rows="5" id="desc"></textarea>
+                    </div>-->
+                    <div id="article">
+                    <label>Body:</label>
+                    {{> froala}}
+                    </div>
+                    <div id="pdf">
+                    <label for="sel1">Upload pdf file:</label><br/>
+                      {{> uploadFormPdf}}
+                    </div>
+                    <br/>
+                    <button id="task_submit" class="btn btn-success btn-sm">Submit</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    </div>
+    </div>
+    
+    <div id="myposts" class="tab-pane fade">
+    <div class="row">
+    <div class="col-md-6">
+      <div id="accordion">
+            <div class="card">
+              <div class="card-header" style="background: #6c757d">
+                <a class="card-link" style="color:white">
+                  MY PENDING POSTS
+                </a>
+              </div>
+            </div>
+          </div>    
+      <div class="profile-content" style="padding:0">
+          
+            <ul class="list-group list-group-flush">
+              {{#each pendingTasksOwned}}
+                {{> task}}
+              {{/each}}
+            </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" style="background: green">
+            <a class="card-link" style="color:white">
+              MY APPROVED POSTS
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="profile-content" style="padding:0">
+          
+            <ul class="list-group list-group-flush">
+              {{#each approvedTasksOwned}}
+                {{> task}}
+              {{/each}}
+            </ul>
+      </div>
+
+    </div>
+	</div>
+	</div>
+
+
+
+    <div id="menu3" class="tab-pane fade">
+      <div class="row">
+        <div class="col-md-6">
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" style="background: #6c757d">
+                <a class="card-link" style="color:white">
+                  GROUP PENDING POSTS
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="profile-content" style="padding:0">
+          
+                <ul class="list-group list-group-flush">
+                  {{#if canManageUsers}}
+                    {{#each pendingTasksAdmin}}
+                      {{> taskEditor}}
+                    {{/each}}
+                  {{else}}
+                    {{#each pendingTasks}}
+                      {{> taskEditor}}
+                    {{/each}}
+                  {{/if}}
+                  
+                </ul>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" style="background: green">
+                <a class="card-link" style="color:white">
+                  GROUP APPROVED POSTS
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="profile-content" style="padding:0">
+          
+                <ul class="list-group list-group-flush">
+                  {{#if canManageUsers}}
+                    {{#each approvedTasksAdmin}}
+                      {{> task}}
+                    {{/each}}
+                  {{else}}
+                    {{#each approvedTasks}}
+                      {{> task}}
+                    {{/each}}
+                  {{/if}}
+                </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+{{else}}
+<div style="margin:10%;text-align:center">
+<h1>403 Access Denied</h1>
+<button onclick="window.location.href='/'" type="button" class="btn btn-dark btn-sm">Go back to home page</button>
+</div>
+{{/if}}
+</template>

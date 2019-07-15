@@ -1,0 +1,138 @@
+<template name="App_body">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white static-top" style="padding:0; border-bottom: #eee solid 1px;">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+          <img src="header_green.png" alt="" style="height:50px">
+        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <!--<a class="nav-link" href="#">{{> loginButtons}}</a>-->
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Crops
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Rice</a>
+            <a class="dropdown-item" href="#">Corn</a>
+            <a class="dropdown-item" href="#">Banana</a>
+            <a class="dropdown-item" href="#">Coconut</a>
+            <a class="dropdown-item" href="#">Coffee</a>
+            <a class="dropdown-item" href="#">Cacao</a>
+            <a class="dropdown-item" href="#">Sugarcane</a>
+            <a class="dropdown-item" href="#">Tomato</a>
+            <a class="dropdown-item" href="#">Soybean</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Maps
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Suitability Maps</a>
+            <a class="dropdown-item" href="#">Normalized Difference Vegetation Index</a>
+            <a class="dropdown-item" href="#">Rainfall Map</a>
+            <a class="dropdown-item" href="#">SVTR Map</a>
+            <a class="dropdown-item" href="#">Enhanced Vegetation Index</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Services
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Rainfall Outlook</a>
+            <a class="dropdown-item" href="#">Suitability</a>
+            <a class="dropdown-item" href="#">Drought Forecast</a>
+            <a class="dropdown-item" href="#">Weather Monitoring</a>
+          </div>
+        </li>
+        {{#if currentUser}}
+        <li class="nav-item">
+          <!--<a class="nav-link" href="#">{{> loginButtons}}</a>-->
+          <a class="nav-link" href="/profile" style="text-decoration:underline">{{firstName}}</a>
+        </li>
+        <li class="nav-item">
+          <!--<a class="nav-link" href="#">{{> loginButtons}}</a>-->
+          <a class="nav-link logout" href="/">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <!--<a class="nav-link" href="#">{{> loginButtons}}</a>-->
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <!--<a class="nav-link" href="#">{{> loginButtons}}</a>-->
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        {{/if}}
+        <li class="nav-item">
+          <img src="dost-pcaarrd-uplb.png" style="height:40px;margin-left:20px">
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="content-container">    
+    {{> Template.dynamic template=main}}          
+</div>  
+
+
+<!--
+    <div class="container">
+      {{#if isAuthor}}
+        <form class="new-task">
+          <select id="group" style="margin-bottom:20px">
+            <option selected disabled value="select">Select group</option>
+            <option value="Rice">Rice</option>
+            <option value="Corn">Corn</option>
+            <option value="Banana">Banana</option>
+            <option value="Coconut">Coconut</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Cacao">Cacao</option>
+            <option value="Sugarcane">Sugarcane</option>
+            <option value="Tomato">Tomato</option>
+            <option value="Soybean">Soybean</option>
+          </select>
+          <input id="title" type="text" name="text" placeholder="Title" style="margin-bottom:20px;border-color: rgb(169, 169, 169);border-style: solid;border-width: 1px;" />
+          <textarea id="desc" type="text" name="text" placeholder="Description" style="height:150px;width:100%"></textarea>
+          <input type="submit" value="Submit">
+        </form>
+
+        <ul>
+          {{#each tasks}}
+            {{> task}}
+          {{/each}}
+        </ul>
+
+      {{else}}
+        {{#if isEditor}}
+        <ul>
+          {{#each tasksEditor}}
+            {{> taskEditor}}
+          {{/each}}
+        </ul>
+        {{else}}
+          <span>Landing page</span>
+        {{/if}}
+      {{/if}}
+
+    </div>-->
+ 
+  
+
+  <div>
+      <img src="partner-institutions.jpg" style="width:100%">
+    </div>
+
+    <div class="container-fluid" id="footer" style="font-family:'sans-serif';color:white;background:#444440;height:100px">
+    </div>
+</template>
+

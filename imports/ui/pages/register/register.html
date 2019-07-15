@@ -1,0 +1,97 @@
+<template name="register">
+        <style>
+        .login-container{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.login-form-1{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+.login-form-2{
+    padding: 3%;
+    background: #66ff99;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-container form{
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #66ff99;
+    background-color: #fff;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    </style>
+
+
+    <div class="container login-container">
+            <div class="row">
+                
+                <div class="col-md-6 login-form-2" style="margin:auto">
+                    <img src="header_white_green.png" style="width:100%">
+                    <form class="register">
+                        <div class="form-group">
+                            <input type="text" name="fname" class="form-control" placeholder="First name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="lname" class="form-control" placeholder="Last name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <!--<div class="form-group">
+                          <label for="sel1">Role:</label>
+                          <select class="form-control" id="role">
+                            <option value="author">Author</option>
+                            <option value="reviewer">Reviewer</option>
+                          </select>
+                        </div>
+                        <div class="form-group" id="groupform">
+                            <input type="text" name="group" class="form-control" placeholder="Group *" value="" />
+                        </div>-->
+
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Your Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Register" />
+                        </div>
+                        <div class="form-group">
+                            Have an existing account? <a href="/login" class="ForgetPwd" value="Login" style="color:white">Sign in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</template>

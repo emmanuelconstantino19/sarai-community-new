@@ -1,0 +1,29 @@
+<template name="user">
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}} task list-group-item">     
+      <div style="margin-bottom:5px"><span style="font-weight:bold">{{profile.firstname}} {{profile.lastname}}<br/></span></div>
+      <div class="form-group">
+          <label for="sel1">Role:</label>
+          <select class="form-control role-select">
+            <option value="subscriber" {{isSelected profile.role role_select='subscriber'}}>Subscriber</option>
+            <option value="author" {{isSelected profile.role role_select='author'}}>Author</option>
+            <option value="reviewer" {{isSelected profile.role role_select='reviewer'}}>Reviewer</option>
+
+          </select>
+        </div>
+        {{#if isReviewer profile.role}}
+        	<label for="sel1">Group:</label>
+         	 <select class="form-control group-select">
+         	 	<option value="select" {{isGroupSelected profile.group group_select='select'}} disabled>Select group</option>
+         	 	<option value="rice" {{isGroupSelected profile.group group_select='rice'}}>Rice</option>
+            	<option value="corn" {{isGroupSelected profile.group group_select='corn'}}>Corn</option>
+            	<option value="banana" {{isGroupSelected profile.group group_select='banana'}}>Banana</option>
+            	<option value="coconut" {{isGroupSelected profile.group group_select='coconut'}}>Coconut</option>
+            	<option value="coffee" {{isGroupSelected profile.group group_select='coffee'}}>Coffee</option>
+            	<option value="cacao" {{isGroupSelected profile.group group_select='cacao'}}>Cacao</option>
+            	<option value="sugarcane" {{isGroupSelected profile.group group_select='sugarcane'}}>Sugarcane</option>
+            	<option value="tomato" {{isGroupSelected profile.group group_select='tomato'}}>Tomato</option>
+            	<option value="soybean" {{isGroupSelected profile.group group_select='soybean'}}>Soybean</option>
+         	 </select>
+        {{/if}}
+  </li>
+</template>
